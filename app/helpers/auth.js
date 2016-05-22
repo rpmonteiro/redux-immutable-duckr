@@ -8,17 +8,15 @@ export default function auth () {
 
 export function checkIfAuthed (store) {
   const currentUser = ref.auth().currentUser
-  debugger
   if (currentUser === null) {
     return false
   } else if (store.getState().users.isAuthed === false) {
     const { displayName, photoURL, uid } = currentUser
     const userInfo = formatUserInfo(displayName, photoURL, uid)
-    debugger
     store.dispatch(authUser(uid))
     store.dispatch(fetchingUserSuccess(uid, userInfo, Date.now()))
   }
-return true
+  return true
 }
 
 export function logout () {
