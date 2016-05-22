@@ -1,20 +1,25 @@
+import { ref, facebookProvider } from 'config/constants'
+import { formatUserInfo } from 'helpers/utils'
+import { fetchingUserSuccess, authUser } from 'redux/modules/users'
+
 export default function auth () {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({
-        name: 'Ric',
-        avatar: 'blob:https%3A//drive.google.com/6244f140-343b-45b1-a178-3e5d47ce713e',
-        uid: 'rpmonteiro',
-      })
-    }, 2000)
-  })
+  return ref.auth().signInWithPopup(facebookProvider)
 }
 
 export function checkIfAuthed (store) {
-  // insert some firebase logic here
-  return store.getState().isAuthed
+  const currentUser = ref.auth().currentUser
+  debugger
+  if (currentUser === null) {
+    return false
+  } else if (store.getState().isAuthed === false) {
+    const { photoURL, displayName, uid } = currentUser
+    const userInfo = formatUserInfo(displayName, photoURL, uid)
+    store.dispatch(authUser(uid))
+    store.dispatch(fetchingUserSuccess(uid, userInfo, Date.now()))
+  }
+  return true
 }
 
 export function logout () {
-  console.log('Logged out!')
+  ref.auth().signOut()
 }
