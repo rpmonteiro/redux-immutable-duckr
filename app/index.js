@@ -9,7 +9,7 @@ import { checkIfAuthed } from 'helpers/auth'
 
 const store = createStore(users, compose(
   applyMiddleware(thunk),
-  // window.devToolsExtension ? window.devToolsExtension() : f => f
+  window.devToolsExtension ? window.devToolsExtension() : f => f
 ))
 
 function checkAuth (nextState, replace) {
