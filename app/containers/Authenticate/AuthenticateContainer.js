@@ -7,20 +7,22 @@ import { connect } from 'react-redux'
 
 const AuthenticateContainer = React.createClass({
   propTypes: {
-    fetchingUser: PropTypes.func.isRequired,
-    fetchingUserFailure: PropTypes.func.isRequired,
-    fetchingUserSuccess: PropTypes.func.isRequired,
+    // fetchingUser: PropTypes.func.isRequired,
+    // fetchingUserFailure: PropTypes.func.isRequired,
+    // fetchingUserSuccess: PropTypes.func.isRequired,
+    // authUser: PropTypes.func.isRequired,
+    fetchAndHandleAuthedUser: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    authUser: PropTypes.func.isRequired,
     error: PropTypes.string.isRequired,
   },
   handleAuth () {
-    this.props.fetchingUser()
-    auth().then(user => {
-      this.props.fetchingUserSuccess(user.uid, user, Date.now())
-      this.props.authUser(user.uid)
-    })
-    .catch((error) => this.props.fetchingUserFailure(error))
+    this.props.fetchAndHandleAuthedUser()
+    // this.props.fetchingUser()
+    // auth().then(user => {
+    //   this.props.fetchingUserSuccess(user.uid, user, Date.now())
+    //   this.props.authUser(user.uid)
+    // })
+    // .catch((error) => this.props.fetchingUserFailure(error))
   },
   render () {
     return (

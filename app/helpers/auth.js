@@ -6,6 +6,6 @@ export default function auth () {
         avatar: 'blob:https%3A//drive.google.com/6244f140-343b-45b1-a178-3e5d47ce713e',
         uid: 'rpmonteiro',
       })
-    }, 200)
+    }, 2000)
   })
 }
