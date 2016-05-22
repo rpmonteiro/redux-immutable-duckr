@@ -1,6 +1,8 @@
 import React from 'react'
 import { Authenticate } from 'components'
 import auth from 'helpers/auth'
+import * as userActionCreators from 'redux/modules/users'
+import { connect } from 'react-redux'
 
 const AuthenticateContainer = React.createClass({
   handleAuth () {
@@ -17,4 +19,4 @@ const AuthenticateContainer = React.createClass({
     )
   },
 })
-export default AuthenticateContainer
+export default connect()(AuthenticateContainer)
