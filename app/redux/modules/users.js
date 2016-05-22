@@ -67,8 +67,7 @@ function user (state = initialUserState, action) {
 export function fetchAndHandleAuthedUser (argument) {
   return function (dispatch) {
     dispatch(fetchingUser())
-    auth().then(user => {
-      console.log(user)
+    return auth().then(user => {
       dispatch(fetchingUserSuccess(user.uid, user, Date.now()))
       dispatch(authUser(user.uid))
     })
