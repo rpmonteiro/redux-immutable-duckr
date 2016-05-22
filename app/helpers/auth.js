@@ -8,7 +8,6 @@ export default function auth () {
 
 export function checkIfAuthed (store) {
   const currentUser = ref.auth().currentUser
-  debugger
   if (currentUser === null) {
     return false
   } else if (store.getState().isAuthed === false) {
