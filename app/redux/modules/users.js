@@ -65,6 +65,10 @@ function user (state = initialUserState, action) {
   }
 }
 
+/*
+  todo: fix the undefined user reaching the reducer
+ */
+
 export function fetchAndHandleAuthedUser (argument) {
   return function (dispatch) {
     dispatch(fetchingUser())

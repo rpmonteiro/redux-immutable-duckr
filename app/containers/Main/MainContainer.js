@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
-import { container, innerContainer } from './styles.css'
-import { Navigation } from 'components'
 import { connect } from 'react-redux'
+import { Navigation } from 'components'
+import { container, innerContainer } from './styles.css'
 
 const MainContainer = React.createClass({
   propTypes: {
@@ -10,7 +10,7 @@ const MainContainer = React.createClass({
   render () {
     return (
       <div className={container}>
-        <Navigation isAuthed={this.props.isAuthed}/>
+        <Navigation isAuthed={this.props.isAuthed} />
         <div className={innerContainer}>
           {this.props.children}
         </div>
@@ -20,5 +20,5 @@ const MainContainer = React.createClass({
 })
 
 export default connect(
-  (state) => ({isAuthed: state.isAuthed})
+  ({users}) => ({isAuthed: users.isAuthed})
 )(MainContainer)
