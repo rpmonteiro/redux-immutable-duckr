@@ -37,3 +37,11 @@ export function saveDuck (duck) {
     saveLikeCount(duckId),
   ]).then(() => ({...duck, duckId}))
 }
+
+export function listenToFeed (cb, errorCB) {
+  ref.database().ref().child('ducks').on('value', (snapshot) => {
+    const feed = snapshot.val() || {}
+    const sortedIds = Object.keys(feed).sort((a, b) => feed[b].timestamp - feed[a].timestamp)
+    cb({feed, sortedIds})
+  }, errorCB)
+}
