@@ -6,11 +6,11 @@ export function formatUserInfo (name, photoURL, uid) {
   }
 }
 
-export function formatDuck (text, {name, avatar, uid}) {
+export function formatDuck (text, {name, photoURL, uid}) {
   return {
     text,
     name,
-    avatar,
+    photoURL,
     uid,
     timestamp: Date.now(),
   }

@@ -48,7 +48,7 @@ const initialUserState = {
   info: {
     name: '',
     uid: '',
-    avatar: '',
+    photoURL: '',
   },
 }
 
